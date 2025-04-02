@@ -2,16 +2,36 @@ package com.example.newsapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.example.newsapp.R
 import com.example.newsapp.databinding.ItemArticleBinding
 import com.example.newsapp.model.Article
+import com.example.newsapp.ui.fragments.NewsDetailFragment
+import javax.inject.Inject
 
-class NewsAdapter(private var articles: List<Article>): RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter(
+    private var articles: List<Article>,
+    private val fragmentManager: FragmentManager
+): RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+
     class NewsViewHolder(private val binding: ItemArticleBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(news: Article) {
+        private val cardLayout = binding.cardLayout
+        fun bind(news: Article,fragmentManager: FragmentManager) {
             binding.textViewTitle.text = news.title
             binding.textViewDescription.text = news.description
             binding.textViewPublishedAt.text = news.publishedAt
+            binding.imageViewThumbnail.load(news.urlToImage) {
+                placeholder(R.drawable.ic_launcher_background)
+                error(R.drawable.ic_launcher_background)
+                crossfade(true)
+            }
+            cardLayout.setOnClickListener {
+                val bottomSheetDialog = NewsDetailFragment.newInstance(news)
+                bottomSheetDialog.show(fragmentManager, "NewsDetailFragment")
+
+            }
         }
 
     }
@@ -21,15 +41,15 @@ class NewsAdapter(private var articles: List<Article>): RecyclerView.Adapter<New
         return NewsViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-       return articles.count()
-    }
+    override fun getItemCount() = articles.size
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(articles[position],fragmentManager)
     }
 
-    private fun getItem(position: Int): Article {
-        return articles[position]
+    fun updateData(newArticles: List<Article>) {
+        articles = newArticles
+        notifyDataSetChanged() // Notify RecyclerView to refresh
     }
+
 }

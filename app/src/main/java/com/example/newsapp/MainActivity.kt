@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host, NewsFragment()) // Replace with your fragment class
+                .replace(R.id.news_fragment, NewsFragment()) // Replace with your fragment class
                 .commit()
         }
     }
