@@ -5,13 +5,16 @@
     android:id="@+id/cardLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="8dp"
+    android:background="?attr/background"
     android:clickable="true"
     android:layout_marginBottom="8dp"
-    app:cardCornerRadius="16dp">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="?attr/background">
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
@@ -25,7 +28,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="8dp">
 
@@ -70,11 +73,21 @@
 
 
         </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/arrow_drop_down"
+            android:contentDescription="Expound"
+            android:clickable="true"
+
+            />
 
 
 
 
     </LinearLayout>
+
 
 
 </androidx.cardview.widget.CardView>

@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimaryLight">#F4511E</color>
+    <color name="onPrimaryLight">#FFFFFF</color>
+    <color name="backgroundLight">#FFFFFF</color>
+    <color name="onBackgroundLight">#FF000000</color>
+    <color name="oulineLight">#ACABAB</color>
+
+    <color name="colorPrimaryDark">#F4491E</color>
+    <color name="onPrimaryDark">#FFFFFF</color>
+    <color name="backgroundDark">#6A000000</color>
+    <color name="onBackgroundDark">#FFFFFF</color>
+
 </resources>

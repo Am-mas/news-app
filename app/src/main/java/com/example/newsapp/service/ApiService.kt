@@ -11,4 +11,21 @@ interface ApiService {
         @Query("country") country: String,
         @Query("apiKey") apiKey:String
     ): Response<NewsResponse>
+
+    @GET("/v2/top-headlines")
+    suspend fun getTopHeadlinesBySource(
+        @Query("source") source: String,
+        @Query("apiKey") apiKey: String
+    ): Response<NewsResponse>
+
+    @GET("/v2/top-headlines")
+    suspend fun getTopHeadlinesByCategory(
+        @Query("category") category: String,
+        @Query("apiKey") apiKey: String
+    ): Response<NewsResponse>
+    @GET("/v2/top-headlines")
+    suspend fun getTopHeadlinesBySearch(
+        @Query("q") q: String,
+        @Query("apiKey") apiKey: String
+    ) : Response<NewsResponse>
 }
